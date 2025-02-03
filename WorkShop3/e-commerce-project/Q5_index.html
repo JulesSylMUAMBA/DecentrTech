@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Front-End</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+    <h1 class="text-center">🛒 E-Commerce Front-End</h1>
+
+    <!-- Section des produits -->
+    <h2>📦 Produits Disponibles</h2>
+    <div id="products" class="row"></div>
+
+    <h2>🛍 Mon Panier</h2>
+    <div id="cart"></div>
+
+    <button class="btn btn-success mt-3" onclick="placeOrder()">🛒 Passer Commande</button>
+
+    <script>
+        const API_URL = "http://localhost:5002";
+
+        // Charger les produits
+        async function loadProducts() {
+            const response = await fetch(`${API_URL}/products`);
+            const products = await response.json();
+
+            let productHTML = "";
+            products.forEach(product => {
+                productHTML += `
+                    <div class="col-md-4 card p-3 m-2">
+                        <h5>${product.name}</h5>
+                        <p>Prix : ${product.price}€</p>
+                        <p>Catégorie : ${product.category}</p>
+                        <button class="btn btn-primary" onclick="addToCart(${product.id})">🛒 Ajouter au Panier</button>
+                    </div>
+                `;
+            });
+            document.getElementById("products").innerHTML = productHTML;
+        }
+
+        // Ajouter un produit au panier
+        async function addToCart(productId) {
+            const response = await fetch(`${API_URL}/cart/1`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ productId: productId, quantity: 1 })
+            });
+
+            if (response.ok) {
+                alert("✅ Produit ajouté au panier !");
+                loadCart(); // Met à jour l'affichage du panier
+            } else {
+                alert("❌ Erreur lors de l'ajout au panier !");
+            }
+        }
+
+        // Charger le panier
+        async function loadCart() {
+            const response = await fetch(`${API_URL}/cart/1`);
+            const cartItems = await response.json();
+
+            let cartHTML = "<ul class='list-group'>";
+            cartItems.forEach(item => {
+                cartHTML += `
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        ${item.name} - ${item.quantity} x ${item.price}€
+                        <button class="btn btn-danger btn-sm" onclick="removeFromCart(${item.id})">🗑️ Supprimer</button>
+                    </li>
+                `;
+            });
+            cartHTML += "</ul>";
+
+            document.getElementById("cart").innerHTML = cartHTML;
+        }
+
+        // Supprimer un produit du panier
+        async function removeFromCart(productId) {
+            const response = await fetch(`${API_URL}/cart/1/item/${productId}`, {
+                method: "DELETE"
+            });
+
+            if (response.ok) {
+                alert("✅ Produit retiré du panier !");
+                loadCart(); // Met à jour l'affichage immédiatement
+            } else {
+                alert("❌ Erreur lors de la suppression !");
+            }
+        }
+
+        // Passer une commande
+        async function placeOrder() {
+            const response = await fetch(`${API_URL}/orders`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userId: 1 })
+            });
+
+            if (response.ok) {
+                alert("✅ Commande passée avec succès !");
+                loadCart(); // Vide le panier après commande
+            } else {
+                alert("❌ Erreur lors de la commande !");
+            }
+        }
+
+        // Charger les données au démarrage
+        loadProducts();
+        loadCart();
+    </script>
+</body>
+</html>
