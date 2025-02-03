@@ -1,0 +1,30 @@
+{
+    "products": [
+        {
+            "name": "Laptop",
+            "price": 1200,
+            "category": "Electronics",
+            "stock": 10,
+            "id": 1
+        }
+    ],
+    "orders": [
+        {
+            "id": 1,
+            "userId": 1,
+            "products": [
+                {
+                    "id": 1,
+                    "name": "Laptop",
+                    "price": 1200,
+                    "quantity": 2
+                }
+            ],
+            "total": 2400,
+            "status": "confirmed"
+        }
+    ],
+    "cart": {
+        "1": []
+    }
+}
