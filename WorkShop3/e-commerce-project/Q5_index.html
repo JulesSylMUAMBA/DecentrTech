@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Front-End</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+    <h1 class="text-center">🛒 E-Commerce Front-End</h1>
+
+    <!-- Section des produits -->
+    <h2>📦 Produits Disponibles</h2>
+    <div id="products" class="row"></div>
+
+    <h2>🛍 Mon Panier</h2>
+    <div id="cart"></div>
+
+    <button class="btn btn-success mt-3" onclick="placeOrder()">🛒 Passer Commande</button>
+
+    <script>
+        const API_URL = "http://localhost:5002";
+
+        // Charger les produits
+        async function loadProducts() {
+            const response = await fetch(`${API_URL}/products`);
+            const products = await response.json();
+
+            let productHTML = "";
+            products.forEach(product => {
+                productHTML += `
+                    <div class="col-md-4 card p-3">
+                        <h5>${product.name}</h5>
+                        <p>Prix : ${product.price}€</p>
+                        <p>Catégorie : ${product.category}</p>
+                        <button class="btn btn-primary" onclick="addToCart(${product.id})">🛒 Ajouter au Panier</button>
+                    </div>
+                `;
+            });
+            document.getElementById("products").innerHTML = productHTML;
+        }
+
+        // Ajouter un produit au panier
+        async function addToCart(productId) {
+            const response = await fetch(`${API_URL}/cart/1`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ productId: productId, quantity: 1 })
+            });
+
+            if (response.ok) {
+                alert("Produit ajouté au panier !");
+                loadCart();
+            } else {
+                alert("Erreur lors de l'ajout au panier !");
+            }
+        }
+
+        // Charger le panier
+        async function loadCart() {
+            const response = await fetch(`${API_URL}/cart/1`);
+            const cartItems = await response.json();
+
+            let cartHTML = "<ul>";
+            cartItems.forEach(item => {
+                cartHTML += `<li>${item.name} - ${item.quantity} x ${item.price}€</li>`;
+            });
+            cartHTML += "</ul>";
+
+            document.getElementById("cart").innerHTML = cartHTML;
+        }
+
+        // Passer une commande
+        async function placeOrder() {
+            const response = await fetch(`${API_URL}/orders`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userId: 1 })
+            });
+
+            if (response.ok) {
+                alert("Commande passée avec succès !");
+                loadCart(); // Vider le panier
+            } else {
+                alert("Erreur lors de la commande !");
+            }
+        }
+
+        // Charger les données au démarrage
+        loadProducts();
+        loadCart();
+    </script>
+</body>
+</html>
