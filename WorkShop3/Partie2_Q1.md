@@ -4,7 +4,7 @@
 L'objectif de cette question est de créer un serveur **Flask minimal** qui affiche `"Hello, World!"` lorsqu'on accède à la racine (`/`).
 
 ## 🚀 Implémentation
-Nous avons utilisé Flask pour implémenter un serveur basique. Voici le code source utilisé :
+J'ai utilisé Flask pour implémenter un serveur basique. Voici le code source utilisé :
 
 ### 📜 Code (`app.py`)
 ```python
