@@ -1,0 +1,93 @@
+TORRENT :
+
+Questions
+
+    Q1 - Create a torrent containing this image(https://cdn.futura-sciences.com/sources/images/Chaton.jpeg)
+R/ torrent create Chaton.jpeg -o Torrent_chat
+
+
+
+    Q2 - Now copy the image to a new directory named partition1 and create a torrent of this folder. What do you observe?
+R/ torrent create partition1 -o Torrent_Directory
+
+
+C:\Users\muamb\Desktop\ESILV\2024-2025\Sem2\Decentralization_Technologies\Workshop2>ls -l Torrent_Directory
+-rw-r--r-- 1 muamb muamb 1232 Jan 20 15:38 Torrent_Directory
+
+C:\Users\muamb\Desktop\ESILV\2024-2025\Sem2\Decentralization_Technologies\Workshop2>ls -l Torrent_chat
+-rw-r--r-- 1 muamb muamb 1200 Jan 20 15:36 Torrent_chat
+
+
+What i observed is just the torrent of Directory is a bit heavier than the torrent of just image.
+And the directory partition1 no longer weigh anything anymore, but when we in there the cat image still weih the same as the beginnin.
+
+ls -l
+total 8
+-rw-r--r-- 1 muamb muamb    0 Jan 20 15:28 Answers.txt
+-rw-r--r-- 1 muamb muamb 1232 Jan 20 15:38 Torrent_Directory
+-rw-r--r-- 1 muamb muamb 1200 Jan 20 15:36 Torrent_chat
+drwxr-xr-x 1 muamb muamb    0 Jan 20 15:37 partition1
+
+The image we downloaded weigh more and more than the torrent file we created.
+-rw-r--r-- 1 muamb muamb 580873 Jan 20 15:43 Chaton.jpeg
+
+
+
+
+    Q3 - Copy the partition1 folder and then generate the associated torrent. What do you observe?
+
+cp -r partition1 partition2
+
+C:\Users\muamb\Desktop\ESILV\2024-2025\Sem2\Decentralization_Technologies\Workshop2>ls
+Answers.txt  Torrent_Directory  Torrent_chat  partition1  partition2
+
+
+torrent info Torrent_Directory > info_dir
+
+torrent info Torrent_Directory2 > info_dir2
+
+
+
+>diff info_dir info_dir2
+11c11
+<     "name": "partition1",
+---
+>     "name": "partition2",
+14,15c14,15
+<   "infoHash": "5e41d90b1e0c8ed9f9c1abf64f242d685317fffe",
+<   "name": "partition1",
+---
+>   "infoHash": "65e3cd9110890348696cf5bbdb83a27d4a492daa",
+>   "name": "partition2",
+57c57
+<       "path": "partition1\\Chaton.jpeg",
+---
+>       "path": "partition2\\Chaton.jpeg",
+
+C:\Users\muamb\Desktop\ESILV\2024-2025\Sem2\Decentralization_Technologies\Workshop2>
+
+I observed that the main difference is on the hash of the directories.
+
+But when we compare directertly the directory without going through torrent info , there's no differente.
+
+
+
+IPFS
+Questions
+
+
+    Q1 - Upload the previous image to IPFS.
+The file is there.
+
+    Q2 - Now upload partition1 to IPFS. What do you observe compared to the torrent part?
+The file and the directory have the same size
+
+
+    Q3 - Copy the partition1 folder and then generate the associated torrent. What do you observe?
+
+I've copie partition1 into partition2, and we can notice they got the same CID.
+I've retrieved it, i created partition3 with partion4 in it, and inside partition4 there's the image.
+
+I've noticed that the partiction 3 have different CID but partition4 has same CID than partition1 and 2.
+The same for the cat image.
+So it's Something about tree structure maybe.

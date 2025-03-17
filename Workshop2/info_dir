@@ -1,0 +1,104 @@
+{
+  "info": {
+    "files": [
+      {
+        "length": 580873,
+        "path": [
+          "Chaton.jpeg"
+        ]
+      }
+    ],
+    "name": "partition1",
+    "piece length": 16384
+  },
+  "infoHash": "5e41d90b1e0c8ed9f9c1abf64f242d685317fffe",
+  "name": "partition1",
+  "private": false,
+  "created": {},
+  "announceList": [
+    [
+      "udp://tracker.leechers-paradise.org:6969"
+    ],
+    [
+      "udp://tracker.coppersurfer.tk:6969"
+    ],
+    [
+      "udp://tracker.opentrackr.org:1337"
+    ],
+    [
+      "udp://explodie.org:6969"
+    ],
+    [
+      "udp://tracker.empire-js.us:1337"
+    ],
+    [
+      "wss://tracker.btorrent.xyz"
+    ],
+    [
+      "wss://tracker.openwebtorrent.com"
+    ],
+    [
+      "wss://tracker.fastcast.nz"
+    ]
+  ],
+  "announce": [
+    "udp://tracker.leechers-paradise.org:6969",
+    "udp://tracker.coppersurfer.tk:6969",
+    "udp://tracker.opentrackr.org:1337",
+    "udp://explodie.org:6969",
+    "udp://tracker.empire-js.us:1337",
+    "wss://tracker.btorrent.xyz",
+    "wss://tracker.openwebtorrent.com",
+    "wss://tracker.fastcast.nz"
+  ],
+  "urlList": [],
+  "files": [
+    {
+      "path": "partition1\\Chaton.jpeg",
+      "name": "Chaton.jpeg",
+      "length": 580873,
+      "offset": 0
+    }
+  ],
+  "length": 580873,
+  "pieceLength": 16384,
+  "lastPieceLength": 7433,
+  "pieces": [
+    "290c7115c8ae3afa6f312797afdfbe47a3b66ada",
+    "0d5bd770d1ee3d247899c35683a989cfcbdab5d1",
+    "7023cdc1fe30eee5625945741233ceaa9d3d803c",
+    "e77190d6cebc1a4db7ca70372971ad090df3adc0",
+    "c5daafc1dc57a09f0cebec2922682208f7bb89ec",
+    "cc2c2129a677f6e3e7fcb362835c800a4e0ff2a7",
+    "4a29f5b696c6e5c37060a0f85fbfcdcefeb764e9",
+    "40beaae20c85d54c14763726b11928493015e61a",
+    "b8761f3141bd6e141197dd49dc843ff0c72d708a",
+    "050d708460b67b4e11479c2994d996359c7043ea",
+    "af966b8f3d79fc5cc2a22960e6d9f06fc2253197",
+    "9aa24547c1cca818083b38add921d2c950c7ae14",
+    "62f5b85d9dfb1a19cbaa0d054714a732815910ce",
+    "b71f60c135360ccf1a7af09360bfa4cb6eefdc74",
+    "9cbedee75282c2c76835e39d38cc2f9655289000",
+    "948386f280a7c78ab30ac99939181dfd0eec278a",
+    "ba6175771b16ad730ecd97769ee5dbed4cfa87fc",
+    "e905716e2220ab67f2aa0aaec3b9ad8cfcebf23c",
+    "0535364910540379611a4956b088edb37d49a30f",
+    "533f330a31f42bd0df08b8347cd81e8a7d1ff212",
+    "541044331000027aed6c029a3884838c94d98552",
+    "3f0e6087b95ceb1f3205493e7e690aeed20c400c",
+    "13109a4a2d09f67a2e49313f15a4f0f01ed65358",
+    "06240ec1ea01f56b3736646ee93866614d808134",
+    "878bda781c66ddb0f00415a8acd4da9750cd4c0a",
+    "1e9a55492a2c80c6b3d5584ba07316f259ba8615",
+    "4da4e79862c88370a172e545e469fc3a3d780c54",
+    "603cebd66c2f088d8b1e8424a03818656ac9e6b0",
+    "cd47c2fc40776f533fa5b8a626f1ba4704ffc7d8",
+    "a20338170e962a2330951d277174f10a6344f21a",
+    "ea032156f44c3a3977f2c35878b5b46d467f6b24",
+    "6605a3730186a382ff4177ed2ce5d8cb7552e6c8",
+    "28444d105459d436c6f5e070f86dda2ec18265ee",
+    "f54ae4e7d58c89192c750fb7ccbdf0c097e76d16",
+    "47ef796e339ea8f660b416ceb54f52fac5b3729e",
+    "05ff77ef2c48353bf45bdfb2de11ca31964d38d9"
+  ]
+}
